@@ -54,6 +54,26 @@ def plot_results(y_test, predictions):
     plt.show()
 
 
+def plot_location_vs_price(df):
+    """Plot a map showing how location (lat/long) relates to housing price."""
+    plt.figure(figsize=(12, 8))
+    scatter = plt.scatter(
+        df['Longitude'],
+        df['Latitude'],
+        c=df['Price'],
+        cmap='viridis',
+        alpha=0.5,
+        s=10
+    )
+    plt.colorbar(scatter, label='Price ($100k)')
+    plt.xlabel('Longitude')
+    plt.ylabel('Latitude')
+    plt.title('California Housing Prices by Location')
+    plt.tight_layout()
+    plt.savefig('location_vs_price.png')
+    plt.show()
+
+
 def main():
     # Load data
     print("Loading California Housing dataset...")
